@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://i.imgur.com/uCq2gB1.png" alt="Logo" width="150">
+  <img src="https://github.com/Blindsinner/Networking-Tutor/blob/main/logo.png" alt="Logo" width="150">
   <h1>Interactive Networking Tutor</h1>
   <p><strong>A comprehensive, AI-enhanced web application for learning computer networking, from beginner to architect.</strong></p>
   <p><em>Created by <a href="https://github.com/Blindsinner">Blindsinner</a></em></p>
