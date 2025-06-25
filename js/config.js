@@ -6,4 +6,4 @@
  * 3. DO NOT share this file publicly or commit it to a public Git repository.
  */
 
-const API_KEY = "AIzaSyB2bGvwPCK_DDJtwU07CgNlA9PFRDbJ22I";
+const API_KEY = "YOUR_API_KEY_HERE";
