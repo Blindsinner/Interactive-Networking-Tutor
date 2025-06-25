@@ -25,7 +25,7 @@ The core learning experience is enhanced by **Google's Gemini AI**, which provid
 
 A live version of this project is hosted on GitHub Pages.
 
-**[➡️ Launch the Interactive Networking Tutor](https://blindsinner.github.io/interactive-networking-tutor/)**
+**[➡️ Launch the Interactive Networking Tutor](https://blindsinner.github.io/Interactive-Networking-Tutor/)**
 
 > **Note:** Please replace the link above if you deploy to a different URL. The link assumes your repository is named `interactive-networking-tutor`.
 
