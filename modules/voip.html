@@ -1,0 +1,47 @@
+<section id="voip-content" aria-labelledby="voip-title">
+    <h2 id="voip-title">5. VoIP & SIP</h2>
+    <p><strong>VoIP (Voice over IP)</strong> is a technology that allows you to make voice calls using an internet connection instead of a regular phone line. <strong>SIP (Session Initiation Protocol)</strong> is the underlying signaling protocol used to create, modify, and terminate these sessions.</p>
+    
+    <div class="interactive-area">
+        <h3>Basic SIP Call Flow</h3>
+        <p>A simple call between two phones, Alice and Bob, involves a sequence of SIP messages. Click through the steps to see the messages exchanged and view a sample of the SIP headers for each one.</p>
+        <div id="sip-flowchart">
+            <button data-step="invite">1. INVITE →</button>
+            <button data-step="trying">← 2. 100 Trying</button>
+            <button data-step="ringing">← 3. 180 Ringing</button>
+            <button data-step="ok">← 4. 200 OK</button>
+            <button data-step="ack">5. ACK →</button>
+        </div>
+        <pre id="sip-headers-display">Click a step above to see sample headers.</pre>
+    </div>
+
+    <div class="interactive-area">
+        <h3>Audio Codec Comparison</h3>
+        <p>The actual voice data is compressed by a <strong>codec</strong> (coder-decoder) to save bandwidth. Different codecs offer trade-offs between audio quality and bandwidth usage. Listen to the examples below to hear the difference.</p>
+        <table class="codec-table">
+            <thead>
+                <tr><th>Codec</th><th>Typical Bandwidth</th><th>Quality</th><th>Listen</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>G.711 (a-Law/µ-Law)</strong></td>
+                    <td>~87 kbps</td>
+                    <td>High (Uncompressed PSTN Quality)</td>
+                    <td><audio controls src="assets/audio/g711.wav" aria-label="G.711 audio sample"></audio></td>
+                </tr>
+                <tr>
+                    <td><strong>G.729</strong></td>
+                    <td>~32 kbps</td>
+                    <td>Good (Compressed, for low-bandwidth links)</td>
+                    <td><audio controls src="assets/audio/g729.wav" aria-label="G.729 audio sample"></audio></td>
+                </tr>
+                 <tr>
+                    <td><strong>Opus</strong></td>
+                    <td>6-510 kbps (Variable)</td>
+                    <td>Excellent (Modern, adaptable for web)</td>
+                    <td><audio controls src="assets/audio/opus.wav" aria-label="Opus audio sample"></audio></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

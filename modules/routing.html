@@ -1,0 +1,36 @@
+<section id="routing-content" aria-labelledby="routing-title">
+    <h2 id="routing-title">4. Routing Protocols & CLI</h2>
+    <p>A <strong>router's</strong> primary job is to forward packets between different networks. To do this, it maintains a <strong>routing table</strong>—a map of known networks and the best path to reach them. Routers build this table in two ways: through <strong>static routes</strong> (manually entered by an administrator) or through <strong>dynamic routing protocols</strong>.</p>
+    <ul>
+        <li><strong>Static Route:</strong> A fixed path. Simple and secure, but doesn't adapt to network changes.</li>
+        <li><strong>Dynamic Protocols (e.g., OSPF, EIGRP):</strong> Routers "talk" to each other to learn about the network topology. They use metrics like "cost" or "hop count" to calculate the best path and can automatically re-route around failures.</li>
+    </ul>
+
+    <div class="interactive-area">
+        <h3>Routing Visualizer & CLI</h3>
+        <p>Below is a network topology. Use the embedded Command Line Interface (CLI) to inspect the router's state and initiate a `ping` to see the packet flow. Change the simulated protocol to see how the "best" path changes.</p>
+        
+        <div class="routing-container">
+            <div>
+                <h4>Network Topology</h4>
+                <div style="margin-bottom: 1rem;">
+                    <label for="protocol-select">Simulate Protocol on R1:</label>
+                    <select id="protocol-select">
+                        <option value="static">Static Route</option>
+                        <option value="ospf" selected>OSPF (Lowest Cost)</option>
+                    </select>
+                </div>
+                <div id="routing-visualizer"></div>
+            </div>
+            <div class="cli-container">
+                <div class="cli-output" id="cli-output">
+                    <div>Welcome to R1 Router Simulation. Type 'help' for commands.</div>
+                </div>
+                <div class="cli-input-line">
+                    <span class="cli-prompt">R1#&nbsp;</span>
+                    <input type="text" id="cli-input" class="cli-input" aria-label="Router Command Line Input" autocomplete="off">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

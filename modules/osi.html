@@ -1,0 +1,45 @@
+<section id="osi-content" aria-labelledby="osi-title">
+    <h2 id="osi-title">1. OSI & TCP/IP Models</h2>
+    <p>To standardize network communication, engineers developed layered models. These models act as a universal blueprint, breaking down the complex process of sending data into smaller, manageable parts called <strong>layers</strong>. Each layer has a specific job and only talks to the layers directly above and below it.</p>
+    
+    <h3>The Two Key Models</h3>
+    <p>The <strong>OSI (Open Systems Interconnection) Model</strong> is a 7-layer conceptual framework. The more practical <strong>TCP/IP Model</strong> has 4 layers and is the foundation of the modern internet. Hover over or focus on a layer to learn its function.</p>
+
+    <div class="models-container">
+        <div class="model" id="osi-model">
+            <h3>OSI Model (Conceptual)</h3>
+            <div class="layer" tabindex="0" data-tooltip="Layer 7: The human-computer interaction layer. (e.g., HTTP, FTP, SMTP)">7. Application</div>
+            <div class="layer" tabindex="0" data-tooltip="Layer 6: Ensures data is in a usable format for the Application layer; handles encryption and data formatting.">6. Presentation</div>
+            <div class="layer" tabindex="0" data-tooltip="Layer 5: Manages communication sessions between devices. Opens, closes, and maintains the connection.">5. Session</div>
+            <div class="layer" tabindex="0" data-tooltip="Layer 4: Provides reliable (TCP) or unreliable (UDP) data transport and handles error checking. PDU: Segment/Datagram.">4. Transport</div>
+            <div class="layer" tabindex="0" data-tooltip="Layer 3: Handles logical addressing (IP addresses) and path determination (routing). PDU: Packet.">3. Network</div>
+            <div class="layer" tabindex="0" data-tooltip="Layer 2: Handles physical addressing (MAC addresses) on the local network. PDU: Frame.">2. Data Link</div>
+            <div class="layer" tabindex="0" data-tooltip="Layer 1: Transmits raw bits over a physical medium (cables, Wi-Fi).">1. Physical</div>
+        </div>
+        <div class="model" id="tcpip-model">
+            <h3>TCP/IP Model (Practical)</h3>
+            <div class="layer" tabindex="0" data-tooltip="Corresponds to OSI Layers 5-7. Where applications create user data.">Application</div>
+            <div class="layer" tabindex="0" data-tooltip="Corresponds to OSI Layer 4. Host-to-host communication (TCP/UDP).">Transport</div>
+            <div class="layer" tabindex="0" data-tooltip="Corresponds to OSI Layer 3. Internet Protocol (IP) addressing and routing.">Internet</div>
+            <div class="layer" tabindex="0" data-tooltip="Corresponds to OSI Layers 1-2. Physical transmission of data.">Network Access</div>
+        </div>
+    </div>
+
+    <div class="interactive-area">
+        <h3>Quiz: Match the PDU</h3>
+        <p>At certain layers, data gets wrapped with headers and is given a specific name, called a Protocol Data Unit (PDU). Drag the PDU name to the correct OSI layer.</p>
+        <div id="pdu-quiz-container" class="models-container">
+            <div class="pdu-sources">
+                <div id="drag-frame" class="draggable-item" draggable="true" data-pdu="Frame">Frame</div>
+                <div id="drag-packet" class="draggable-item" draggable="true" data-pdu="Packet">Packet</div>
+                <div id="drag-segment" class="draggable-item" draggable="true" data-pdu="Segment">Segment</div>
+            </div>
+            <div class="pdu-targets">
+                <div class="pdu-target">Transport Layer (L4): <div class="drop-zone" data-target="Segment"></div></div>
+                <div class="pdu-target">Network Layer (L3): <div class="drop-zone" data-target="Packet"></div></div>
+                <div class="pdu-target">Data Link Layer (L2): <div class="drop-zone" data-target="Frame"></div></div>
+            </div>
+        </div>
+        <div id="quiz1-feedback" class="quiz-feedback" role="alert" aria-live="assertive"></div>
+    </div>
+</section>

@@ -1,0 +1,44 @@
+<section id="security-content" aria-labelledby="security-title">
+    <h2 id="security-title">6. ACL Security Sandbox</h2>
+    <p>Network security involves protecting the usability and integrity of your network and data. A key tool is the <strong>Access Control List (ACL)</strong>, a set of rules applied to router or firewall interfaces that dictates which traffic is allowed or denied.</p>
+    
+    <h3>How ACLs Work</h3>
+    <p>When a packet arrives at an interface with an applied ACL, the device checks the packet against the rules in sequential order. As soon as a match is found, the corresponding `permit` or `deny` action is taken, and no further rules are checked. If no rules match, the packet is dropped by an invisible, implicit `deny any` rule at the end of every ACL.</p>
+
+    <div class="interactive-area">
+        <h3>ACL Sandbox</h3>
+        <p>Create your own simple, IP-based ACL. Rules are processed from top to bottom. Then, send a test packet to see if it's permitted or denied by your policy.</p>
+        <div class="security-sandbox">
+            <div>
+                <h4><label for="acl-action">1. Configure ACL Rules</label></h4>
+                <form id="acl-rules-form" style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                    <select id="acl-action" aria-label="ACL Action">
+                        <option value="permit">Permit</option>
+                        <option value="deny">Deny</option>
+                    </select>
+                    <input type="text" id="acl-ip" placeholder="Source IP (e.g., 10.1.1.5 or 'any')" required style="flex-grow: 1;">
+                    <button type="submit" class="button">Add Rule</button>
+                </form>
+                <ul id="acl-rules-list" style="margin-top: 1rem; padding: 0; list-style: none;"></ul>
+            </div>
+            <div>
+                <h4>2. Test Packet & Get AI Insights</h4>
+                <form id="packet-test-form" style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                    <input type="text" id="packet-source-ip" placeholder="Packet's Source IP" required style="flex-grow: 1;">
+                    <button type="submit" class="button">Send Test Packet</button>
+                </form>
+                <div id="packet-animation-panel">
+                    <div class="firewall-graphic" aria-hidden="true"></div>
+                    <div id="acl-log" style="position: absolute; top: 5px; left: 5px; font-family: var(--font-mono); font-size: 0.8rem;"></div>
+                </div>
+                <div id="acl-ai-button-container" style="margin-top: 1rem; text-align: center; display: none;">
+                    <button id="explain-acl-btn" class="button">🤖 Explain This Rule with AI</button>
+                </div>
+                <div id="acl-ai-explanation" class="ai-explanation-container" style="display: none;">
+                    <h4><span style="font-size: 1.5rem;">🤖</span> Gemini's Analysis</h4>
+                    <div id="acl-ai-content" class="ai-explanation-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

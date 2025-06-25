@@ -1,0 +1,54 @@
+<section id="subnetting-content" aria-labelledby="subnetting-title">
+    <h2 id="subnetting-title">3. IP Addressing & Subnetting</h2>
+    <p>An <strong>IP Address</strong> is a unique numerical label assigned to each device on a network. <strong>Subnetting</strong> is the logical division of a large IP network into smaller sub-networks, or "subnets," determined by a <strong>subnet mask</strong>.</p>
+    
+    <div class="interactive-area">
+        <h3>Real-Time Subnet Calculator</h3>
+        <p>Enter an IPv4 address and a CIDR prefix length. The calculator will instantly show you the key addresses and properties of that subnet.</p>
+        <div class="subnet-calculator-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <div class="subnet-input-group">
+                <label for="ip-address-input">IP Address:</label>
+                <input type="text" id="ip-address-input" value="192.168.10.130" aria-label="IP Address Input">
+            </div>
+            <div class="subnet-input-group">
+                <label for="cidr-input">CIDR Prefix (/1-32):</label>
+                <input type="number" id="cidr-input" min="1" max="32" value="26" aria-label="CIDR Prefix Input">
+            </div>
+        </div>
+        <div class="subnet-output">
+            <pre id="subnet-output-pre" aria-live="polite"></pre>
+        </div>
+
+        <div id="ai-button-container" style="margin-top: 1.5rem; text-align: center; display: none;">
+            <button id="explain-subnet-btn" class="button">🤖 Explain This Calculation with AI</button>
+        </div>
+        <div id="subnet-ai-explanation" class="ai-explanation-container" style="display: none;">
+            <h4><span style="font-size: 1.5rem;">🤖</span> Gemini's Explanation</h4>
+            <div id="subnet-ai-content" class="ai-explanation-content"></div>
+        </div>
+    </div>
+
+    <div class="interactive-area">
+        <h3>Knowledge Check</h3>
+        <p>You are given the IP address `10.10.10.70` with a subnet mask of `/28`. What is the broadcast address of this subnet?</p>
+        <form id="subnet-quiz-form">
+            <fieldset>
+                <legend class="visually-hidden">Subnetting multiple choice question</legend>
+                <div class="quiz-option" style="margin: 0.5rem 0;">
+                    <input type="radio" name="q1" id="q1-a1" value="10.10.10.64">
+                    <label for="q1-a1">10.10.10.64</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="q1" id="q1-a2" value="10.10.10.79">
+                    <label for="q1-a2">10.10.10.79</label>
+                </div>
+                <div class="quiz-option">
+                    <input type="radio" name="q1" id="q1-a3" value="10.10.10.255">
+                    <label for="q1-a3">10.10.10.255</label>
+                </div>
+            </fieldset>
+            <button type="submit">Check Answer</button>
+            <div id="quiz2-feedback" class="quiz-feedback" role="alert" aria-live="assertive"></div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+<section id="automation-content" aria-labelledby="automation-title">
+    <h2 id="automation-title">7. Network Automation & SDN</h2>
+    <p>Modern networking is moving beyond manual CLI configuration. <strong>Network Automation</strong> uses software to configure, manage, test, and operate network equipment. This reduces human error, increases speed, and allows for complex tasks to be performed at scale. Python has become the de-facto language for network automation.</p>
+
+    <div class="automation-container">
+        <div class="interactive-area">
+            <h3>Lab 1: Python for Networking</h3>
+            <p>This sandbox uses <strong>Pyodide</strong> to run real Python directly in your browser. Write a simple script to parse a 'show version' command output and extract the IOS version. This simulates a common automation task.</p>
+            <div id="pyodide-status" style="margin-bottom: 1rem; font-style: italic;">Loading Python runtime... please wait. This may take a moment.</div>
+            <div>
+                <label for="python-code">Python Script:</label>
+                <textarea id="python-code" rows="10">
+import re
+
+def get_ios_version(show_ver_output):
+    # Regex to find "Version X.Y(Z)"
+    match = re.search(r"Version (\d+\.\d+\S+)", show_ver_output)
+    if match:
+        return match.group(1)
+    return "Version not found"
+
+# Mock router command output
+router_output = """
+Cisco IOS Software, C880 Software (C880DATA-UNIVERSALK9-M), Version 15.4(3)M2, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2014 by Cisco Systems, Inc.
+"""
+
+# Get and return the result
+version = get_ios_version(router_output)
+version
+</textarea>
+                <button id="run-python-btn" disabled>Run Python</button>
+            </div>
+            <pre id="pyodide-output" style="margin-top: 1rem; min-height: 50px;"></pre>
+        </div>
+
+        <div class="interactive-area">
+            <h3>Lab 2: Mock SDN Controller</h3>
+            <p><strong>Software-Defined Networking (SDN)</strong> separates the network's control plane (the "brain") from the data plane (the hardware). A central controller makes decisions and pushes policies to switches via APIs, often using JSON.</p>
+            <p>Edit the JSON policy below and click "Apply" to update the network diagram, simulating a controller pushing a new flow rule.</p>
+             <div>
+                <label for="json-editor">SDN Policy (JSON):</label>
+                <textarea id="json-editor" rows="6"></textarea>
+                <button id="apply-policy-btn">Apply Policy</button>
+            </div>
+            <div id="sdn-topology"></div>
+        </div>
+    </div>
+</section>

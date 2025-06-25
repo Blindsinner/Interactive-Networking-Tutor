@@ -1,0 +1,30 @@
+<section id="observability-content" aria-labelledby="observability-title">
+    <h2 id="observability-title">9. Network Observability</h2>
+    <p>For decades, network monitoring relied on polling devices with protocols like SNMP. <strong>Network Observability</strong> is a modern evolution that focuses on understanding a system's internal state from its external outputs. Instead of just asking "is the router up?", we ask "what is the router experiencing right now?".</p>
+    
+    <h3>Key Data Sources</h3>
+    <ul>
+        <li><strong>Streaming Telemetry:</strong> Devices push (stream) data continuously to a collector, rather than waiting to be polled. This provides much higher resolution and real-time insights. gNMI (gRPC Network Management Interface) is a popular standard.</li>
+        <li><strong>Flow Data (NetFlow/IPFIX):</strong> Routers and switches summarize traffic flows (who talked to whom, for how long, with how much data) and export this data. It's invaluable for performance analysis, security forensics, and capacity planning.</li>
+        <li><strong>Logs & Events:</strong> Unstructured data from devices (Syslog) that can indicate configuration changes, errors, and security events.</li>
+    </ul>
+
+    <div class="interactive-area">
+        <h3>Lab: Mock Traffic Dashboard</h3>
+        <p>This is a simplified dashboard showing network throughput over time. Different network events create distinct traffic patterns. Select a scenario from the dropdown to see how the event would look on a monitoring dashboard and learn to identify key patterns.</p>
+        <div class="mock-dashboard-container">
+            <div style="margin-bottom: 1rem;">
+                <label for="scenario-select">Select Traffic Scenario:</label>
+                <select id="scenario-select">
+                    <option value="normal">Normal Day-to-Day Traffic</option>
+                    <option value="backup">Nightly Network Backup</option>
+                    <option value="ddos">DDoS Attack</option>
+                </select>
+            </div>
+            <div id="traffic-chart-container">
+                <svg id="traffic-chart" width="600" height="300"></svg>
+            </div>
+            <div id="scenario-explanation" style="margin-top: 1rem;"></div>
+        </div>
+    </div>
+</section>

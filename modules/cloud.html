@@ -1,0 +1,46 @@
+<section id="cloud-content" aria-labelledby="cloud-title">
+    <h2 id="cloud-title">8. Cloud Networking</h2>
+    <p>Modern networks don't stop at the on-premises data center; they extend into the public cloud. Understanding the networking constructs of major cloud providers like AWS (Amazon Web Services) and Microsoft Azure is now a critical skill for any network engineer.</p>
+    
+    <h3>Core Concepts</h3>
+    <ul>
+        <li><strong>Virtual Private Cloud (VPC) / Virtual Network (VNet):</strong> A logically isolated section of the public cloud where you can launch resources in a virtual network that you define.</li>
+        <li><strong>Subnets:</strong> A range of IP addresses in your VPC/VNet. You can have public subnets (accessible from the internet) and private subnets (not directly accessible).</li>
+        <li><strong>Gateways:</strong> Devices that enable traffic flow. An **Internet Gateway (IGW)** allows resources in public subnets to communicate with the internet. A **NAT Gateway** allows resources in private subnets to initiate outbound traffic to the internet (e.g., for software updates) without allowing inbound traffic.</li>
+        <li><strong>Network Security Groups (NSGs / SGs):</strong> A virtual firewall for your virtual machines that controls inbound and outbound traffic at the instance level. They are stateful.</li>
+    </ul>
+
+    <div class="interactive-area">
+        <h3>Lab: VPC Architect</h3>
+        <p>Design a basic, secure VPC. Drag components from the palette on the left and drop them into the appropriate zones in the VPC diagram. Once your design is ready, click "Validate Design with AI" to get an expert review from Gemini.</p>
+        <div class="vpc-architect-container">
+            <div id="vpc-palette">
+                <h4>Components</h4>
+                <div class="vpc-draggable" draggable="true" data-type="ec2">EC2 Instance</div>
+                <div class="vpc-draggable" draggable="true" data-type="db">Database</div>
+            </div>
+            <div id="vpc-canvas">
+                <div class="vpc-region">
+                    <div class="vpc-label">VPC (10.0.0.0/16)</div>
+                    <div id="igw-slot" class="vpc-gateway-slot">
+                        <div class="vpc-draggable" draggable="true" data-type="igw">Internet Gateway</div>
+                    </div>
+                    <div id="public-subnet" class="vpc-subnet" data-zone="public">
+                        <div class="subnet-label">Public Subnet (Web Tier)</div>
+                    </div>
+                    <div id="private-subnet" class="vpc-subnet" data-zone="private">
+                        <div class="subnet-label">Private Subnet (App/Data Tier)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 1.5rem;">
+            <button id="validate-vpc-btn" class="button">🤖 Validate Design with AI</button>
+            <button id="reset-vpc-btn" class="button" style="background-color: var(--bg-tertiary);">Reset</button>
+        </div>
+        <div id="vpc-ai-feedback" class="ai-explanation-container" style="display: none;">
+            <h4><span style="font-size: 1.5rem;">🤖</span> Gemini's Design Review</h4>
+            <div id="vpc-ai-content" class="ai-explanation-content"></div>
+        </div>
+    </div>
+</section>

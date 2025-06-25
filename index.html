@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Networking Tutor</title>
+    <meta name="description" content="A complete, interactive single-page application to learn computer networking from beginner to advanced, now with a global AI tutor.">
+    <meta name="keywords" content="Networking, CCNA, TCP/IP, OSI, Subnetting, Routing, Security, VLAN, SIP, Python, Automation, Gemini AI, Cloud, Zero Trust">
+    
+    <meta property="og:title" content="Interactive Networking Tutor with AI">
+    <meta property="og:description" content="Learn networking with interactive diagrams, simulators, and AI-powered explanations.">
+    <meta property="og:image" content="assets/images/logo.png">
+    <meta property="og:url" content="https://your-deployed-domain.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header" role="banner">
+            <div class="logo-container">
+                <img src="assets/images/logo.png" alt="Networking Tutor Logo" class="logo">
+                <h1>Networking Tutor</h1>
+            </div>
+            <button id="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="side-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </header>
+
+        <nav id="side-menu" class="side-menu" aria-label="Main Navigation" role="navigation">
+            <div class="menu-header">
+                <h2>Chapters</h2>
+                <button id="menu-close" aria-label="Close Menu">&times;</button>
+            </div>
+            <ul>
+                <li class="category">
+                    <h3>Fundamentals (Beginner)</h3>
+                    <ul>
+                        <li><a href="#osi" class="nav-link" data-module="osi">1. OSI & TCP/IP Models</a></li>
+                        <li><a href="#ethernet" class="nav-link" data-module="ethernet">2. Ethernet & VLANs</a></li>
+                    </ul>
+                </li>
+                <li class="category">
+                    <h3>IP Networking (Intermediate)</h3>
+                    <ul>
+                        <li><a href="#subnetting" class="nav-link" data-module="subnetting">3. IP Addressing & Subnetting</a></li>
+                        <li><a href="#routing" class="nav-link" data-module="routing">4. Routing Protocols & CLI</a></li>
+                    </ul>
+                </li>
+                <li class="category">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="#voip" class="nav-link" data-module="voip">5. VoIP & SIP</a></li>
+                        <li><a href="#security" class="nav-link" data-module="security">6. ACL Security Sandbox</a></li>
+                        <li><a href="#automation" class="nav-link" data-module="automation">7. Network Automation</a></li>
+                    </ul>
+                </li>
+                 <li class="category">
+                    <h3>Architecture & Modern Networks</h3>
+                    <ul>
+                        <li><a href="#cloud" class="nav-link" data-module="cloud">8. Cloud Networking</a></li>
+                        <li><a href="#observability" class="nav-link" data-module="observability">9. Network Observability</a></li>
+                        <li><a href="#zerotrust" class="nav-link" data-module="zerotrust">10. Zero Trust Architecture</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <main id="main-content" class="main-content" role="main" aria-live="polite">
+            <div class="welcome-message">
+                <h2>Welcome to the Interactive Networking Tutor!</h2>
+                <p>This is your hands-on guide to the world of computer networks. From the foundational OSI model to advanced network automation, every chapter includes interactive labs, quizzes, and now **AI-powered explanations**.</p>
+                <p><strong>Select a chapter from the menu to begin, or click the 🤖 icon in the bottom-right to ask the AI Tutor a question at any time.</strong></p>
+                <div class="features-overview">
+                    <h3>What you'll learn:</h3>
+                    <ul>
+                        <li>&#129302; **NEW:** Get your questions answered by an integrated AI Tutor.</li>
+                        <li>&#128279; The layered models of communication.</li>
+                        <li>&#128755; How switches and VLANs organize local networks.</li>
+                        <li>&#127760; The art of IP subnetting.</li>
+                        <li>&#128736; How routers make path decisions.</li>
+                        <li>&#128222; The protocols behind internet phone calls.</li>
+                        <li>&#128272; The fundamentals of network security.</li>
+                        <li>&#129302; How to automate networks with code.</li>
+                        <li>&#9928;&#65039; How to design basic cloud networks.</li>
+                        <li>&#128200; How to interpret network traffic patterns.</li>
+                        <li>&#128737;&#65039; The principles of Zero Trust security.</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <button id="ai-tutor-fab" class="ai-tutor-fab" aria-label="Open AI Tutor Chat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 4h2v2H4z"/></svg>
+    </button>
+
+    <div id="ai-tutor-overlay" class="ai-tutor-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="ai-tutor-heading">
+        <div class="ai-tutor-window">
+            <header class="ai-tutor-header">
+                <h2 id="ai-tutor-heading">Gemini AI Tutor</h2>
+                <button id="ai-tutor-close-btn" class="ai-tutor-close-btn" aria-label="Close Chat">&times;</button>
+            </header>
+            <div id="ai-tutor-messages" class="ai-tutor-messages"></div>
+            <form id="ai-tutor-form" class="ai-tutor-form">
+                <input type="text" id="ai-tutor-input" placeholder="Ask a networking question..." required autocomplete="off" aria-label="Your message">
+                <button type="submit" aria-label="Send Message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script> 
+    <script src="js/gemini.js"></script>
+    <script src="js/components/AIChatbot.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/loader.js"></script>
+</body>
+</html>

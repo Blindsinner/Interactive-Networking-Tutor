@@ -1,0 +1,41 @@
+<section id="zerotrust-content" aria-labelledby="zerotrust-title">
+    <h2 id="zerotrust-title">10. Zero Trust Architecture (ZTA)</h2>
+    <p>The traditional "castle-and-moat" security model, where everything inside the network is trusted, is obsolete. <strong>Zero Trust</strong> is a modern security strategy built on the principle of "never trust, always verify." It assumes that threats exist both outside and inside the network, so no user or device is trusted by default.</p>
+    
+    <h3>Pillars of Zero Trust</h3>
+    <p>Access to resources is granted on a per-session basis, and only after a device has passed a strict verification process based on several pillars:</p>
+    <ul>
+        <li><strong>Identity:</strong> Who is the user? Are they authenticated with strong methods like Multi-Factor Authentication (MFA)?</li>
+        <li><strong>Device:</strong> What is the device? Is it a managed corporate laptop? Is its OS patched and its antivirus up-to-date?</li>
+        <li><strong>Network:</strong> Where is the request coming from? Is it an unusual location? Is the network itself secure?</li>
+        <li><strong>Application/Workload:</strong> Is this application authorized to access this data?</li>
+    </ul>
+
+    <div class="interactive-area">
+        <h3>Lab: Zero Trust Policy Simulator</h3>
+        <p>A user is trying to access a sensitive database. You are the policy engine. Define the security context by checking the boxes below, then click "Attempt Access" to see if the policy grants or denies the connection based on Zero Trust principles.</p>
+        <div class="zta-policy-simulator">
+            <div id="zta-policy-controls">
+                <h4>Define Security Context</h4>
+                <div class="zta-control">
+                    <input type="checkbox" id="zta-mfa" checked>
+                    <label for="zta-mfa">User authenticated with MFA</label>
+                </div>
+                <div class="zta-control">
+                    <input type="checkbox" id="zta-device" checked>
+                    <label for="zta-device">Device is corporate-managed & compliant</label>
+                </div>
+                <div class="zta-control">
+                    <input type="checkbox" id="zta-location">
+                    <label for="zta-location">Request is from an untrusted network</label>
+                </div>
+                <button id="zta-attempt-btn" class="button">Attempt Access</button>
+            </div>
+            <div id="zta-visualizer">
+                <div class="zta-entity" id="zta-user">User</div>
+                <div id="zta-verdict"></div>
+                <div class="zta-entity" id="zta-resource">Database</div>
+            </div>
+        </div>
+    </div>
+</section>

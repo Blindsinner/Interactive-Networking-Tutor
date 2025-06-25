@@ -1,0 +1,74 @@
+/*
+ * chatbot.css
+ * Contains all styles for the global AI Tutor chatbot component.
+ */
+
+.ai-tutor-fab {
+    position: fixed; bottom: 25px; right: 25px;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background-color: var(--accent-primary);
+    color: white;
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: none; cursor: pointer; z-index: 999;
+    transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+.ai-tutor-fab:hover { transform: scale(1.1); background-color: var(--accent-secondary); }
+
+.ai-tutor-overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.ai-tutor-overlay.hidden { opacity: 0; pointer-events: none; }
+
+.ai-tutor-window {
+    width: 90%; max-width: 600px;
+    height: 80%; max-height: 700px;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+.ai-tutor-overlay.hidden .ai-tutor-window { transform: scale(0.95); }
+
+.ai-tutor-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+}
+.ai-tutor-header h2 { font-size: 1.2rem; color: var(--text-primary); margin: 0; }
+.ai-tutor-close-btn { background: none; border: none; font-size: 2rem; line-height: 1; color: var(--text-secondary); cursor: pointer; padding: 0; }
+
+.ai-tutor-messages {
+    flex-grow: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex; flex-direction: column; gap: 1rem;
+}
+
+.chat-bubble { padding: 0.75rem 1rem; border-radius: 18px; max-width: 80%; line-height: 1.5; }
+.chat-bubble.user { background-color: var(--accent-primary); color: var(--bg-primary); border-bottom-right-radius: 4px; align-self: flex-end; }
+.chat-bubble.ai { background-color: var(--bg-tertiary); color: var(--text-primary); border-bottom-left-radius: 4px; align-self: flex-start; }
+.chat-bubble.ai p { margin-bottom: 0.5rem; }
+.chat-bubble.ai code { white-space: pre-wrap; display: block; margin: 0.5rem 0; }
+.chat-bubble.ai ul { margin-left: 1rem; }
+
+.typing-indicator { align-self: flex-start; display: flex; gap: 5px; padding: 0.75rem 1rem;}
+.typing-indicator span { width: 8px; height: 8px; background-color: var(--text-secondary); border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
+.typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+.typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+@keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
+
+.ai-tutor-form { display: flex; padding: 1rem; border-top: 1px solid var(--border-color); gap: 0.5rem; }
+#ai-tutor-input { flex-grow: 1; border: 1px solid var(--border-color); background-color: var(--bg-primary); }
+.ai-tutor-form button { flex-shrink: 0; width: 50px; height: 50px; padding: 0; display: grid; place-content: center; }

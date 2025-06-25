@@ -1,0 +1,38 @@
+<section id="ethernet-content" aria-labelledby="ethernet-title">
+    <h2 id="ethernet-title">2. Ethernet & VLANs</h2>
+    <p><strong>Ethernet</strong> is the dominant technology for wired Local Area Networks (LANs). It defines how devices format data (into <strong>Frames</strong>) and how they transmit it over a shared medium. Central to Ethernet are <strong>switches</strong>, which learn the physical <strong>MAC address</strong> of each connected device and forward frames only to the intended destination port, unlike hubs which broadcast to all ports.</p>
+    
+    <h3>Virtual LANs (VLANs)</h3>
+    <p>A <strong>VLAN</strong> allows you to segment a physical LAN into multiple, logically separate broadcast domains. Devices in one VLAN are isolated and cannot communicate directly with devices in another VLAN, even if plugged into the same switch. This enhances security and improves network performance by containing broadcast traffic.</p>
+    
+    <div class="interactive-area">
+        <h3>VLAN Simulator</h3>
+        <p>Here are four hosts connected to a switch. By default, Hosts A & B are in the "Sales" VLAN (10), and Hosts C & D are in the "Engineering" VLAN (20). Select a host, then click another host to "ping" it. </p>
+        <div class="vlan-sim-container">
+            <div id="vlan-controls">
+                <h4>Controls</h4>
+                <p>Selected Host: <strong id="selected-host-label">None</strong></p>
+                <div>
+                    <label for="vlan-assignment-select">Assign to VLAN:</label>
+                    <select id="vlan-assignment-select" disabled>
+                        <option value="10">VLAN 10 (Sales)</option>
+                        <option value="20">VLAN 20 (Engineering)</option>
+                    </select>
+                </div>
+                <p id="vlan-sim-instructions">Click a host to select it.</p>
+            </div>
+            <div id="vlan-sim-display">
+                <div class="vlan-host-area">
+                    <div id="hostA" class="vlan-host" data-vlan="10" tabindex="0" aria-label="Host A, VLAN 10">A</div>
+                    <div id="hostC" class="vlan-host" data-vlan="20" tabindex="0" aria-label="Host C, VLAN 20">C</div>
+                </div>
+                <div class="vlan-switch">SWITCH</div>
+                <div class="vlan-host-area">
+                    <div id="hostB" class="vlan-host" data-vlan="10" tabindex="0" aria-label="Host B, VLAN 10">B</div>
+                    <div id="hostD" class="vlan-host" data-vlan="20" tabindex="0" aria-label="Host D, VLAN 20">D</div>
+                </div>
+            </div>
+        </div>
+        <div id="vlan-sim-log" class="cli-output"></div>
+    </div>
+</section>
